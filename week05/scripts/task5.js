@@ -70,45 +70,44 @@ templeArray = [];
 // - Appends the <h3> element, the two <h4> elements, and the <img> element to the <article> element as children
 // - Appends the <article> element to the HTML element with an ID of temples
 function output(array){
-    var element = document.createElement('article');
+    reset();
+
     for (var i = 0; i < array.length; i++) {
-        var name = array[i].name;
+        var element = document.createElement('article');
+        var name = array[i].templeName;
         var location = array[i].location;
         var dedicated = array[i].dedicated;
-        var imgurl = array[i].imageURL;
-        console.log(imgurl);
-        var h3 = document.createElement('h3');
-        h3.appendChild(name);
-        var h4 = document.createElement('h4');
-        h4.appendChild(location);
-        var h4 = document.createElement('h4');
-        h4.appendChild(dedicated);
-        var img = document.createElement('img');
-        img.appendChild(imgurl);
+        var imgurl = array[i].imageUrl;
+        console.log(array[i]);
+        let h3 = document.createElement('h3');
+        let h4 = document.createElement('h4');
+        let h4_2 = document.createElement('h4');
+        let img = document.createElement('img');
+        h3.innerHTML = name;
+        h4.innerHTML = location;
+        h4_2.innerHTML = dedicated;
+        img.innerHTML = imgurl;
         element.appendChild(h3);
         element.appendChild(h4);
         element.appendChild(h4);
         element.appendChild(img);
-
+        document.getElementById('temples').append(element)
     }
 }
 // Step 3: Create another function called getTemples. Make it an async function.
 // Step 4: In the function, using the built-in fetch method, call this absolute URL: 'https://byui-cse.github.io/cse121b-course/week05/temples.json'. Create a variable to hold the response from your fetch. You should have the program wait on this line until it finishes.
 // Step 5: Convert your fetch response into a Javascript object ( hint: .json() ). Store this in the templeList variable you declared earlier (Step 1). Make sure the the execution of the code waits here as well until it finishes.
 // Step 6: Finally, call the output function and pass it the list of temples. Execute your getTemples function to make sure it works correctly.
-var templecall = [];
 
-const url = 'https://byui-cse.github.io/cse121b-course/week05/temples.json';
-async function getTemples(url){
-    templecall = await fetch(url);
-    console.log(templecall);
+const templeurl = 'https://byui-cse.github.io/cse121b-course/week05/temples.json';
+async function getTemples(templeurl){
+    const templecall = await fetch(templeurl);
     if (templecall.ok){
-        templeData = templecall.json();
-        output(templeData);
-        console.log(':)');
-    }else{
-        console.log('no response');
+        const templeData = await templecall.json();
+        sortBy(templeData);
+        
     }
+
 }
 
 // Step 7: Declare a function named reset that clears all of the <article> elements from the HTML element with an ID of temples
@@ -120,19 +119,21 @@ function reset(){
 // - Calls the reset function
 // - Sorts the global temple list by the currently selected value of the HTML element with an ID of sortBy
 // - Calls the output function passing in the sorted list of temples
-function sortBy(){
+function sortBy(array){
     reset();
     if(document.getElementById('sortBy').value == 'templeNameAscending'){
-        templelist.sort();
+        array.sort();
     }else{
-        templelist.sort();
-        templelist.reverse();
+        array.sort();
+        array.reverse();
     }
-    output(templelist);
-
+    output(array);
+}
+function main(){
+    getTemples(templeurl);
 }
 // Step 9: Add a change event listener to the HTML element with an ID of sortBy that calls the sortBy function
-document.getElementById('sortBy').addEventListener('click',getTemples );
+document.getElementById('sortBy').addEventListener('click',main );
 /* STRETCH */
 
 // Consider adding a "Filter by" feature that allows users to filter the list of temples
