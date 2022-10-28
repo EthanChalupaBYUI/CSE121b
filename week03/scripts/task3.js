@@ -60,15 +60,15 @@ divideButton.addEventListener('click', divideNumbers);
 /* BUILT-IN METHODS */
 
 // Step 1: Declare and instantiate a variable of type Date to hold the current date
-const date = new Date();
 // Step 2: Declare a variable to hold the current year
 // Step 3: Using the variable declared in Step 1, call the built-in getFullYear() method/function and assign it to the variable declared in Step 2
+const date = new Date();
 const year = date.getFullYear();
 console.log(year)
-
-// Step 4: Assign the current year variable to an HTML form element with an ID of year
 const HTMLyear = document.getElementById("year");
 HTMLyear.innerHTML = year;
+
+// Step 4: Assign the current year variable to an HTML form element with an ID of year
 /* ARRAY METHODS */
 
 // Step 1: Declare and instantiate an array variable to hold the numbers 1 through 25

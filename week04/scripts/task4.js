@@ -39,8 +39,9 @@ document.getElementById('photo').alt = personalInfo.name;
 
 var ul = document.getElementById("favorite-foods");
 
-for (var i = 0; i < personalInfo.favoriteFoods.length; i++) {
-    var food = personalInfo.favoriteFoods[i];
+personalInfo.favoriteFoods.forEach(favoriteFoodPrint);
+function favoriteFoodPrint(item){
+    var food = item;
     var li = document.createElement('li');
     li.appendChild(document.createTextNode(food));
     ul.appendChild(li);
@@ -50,21 +51,24 @@ for (var i = 0; i < personalInfo.favoriteFoods.length; i++) {
 // Step 6: Repeat Step 4 for each hobby in the hobbies property
 var ul = document.getElementById("hobbies");
 
-for (var i = 0; i < personalInfo.hobbies.length; i++) {
-    var hobby = personalInfo.hobbies[i];
+personalInfo.hobbies.forEach(hobbiesPrint);
+function hobbiesPrint(item){
+    var item = item;
     var li = document.createElement('li');
-    li.appendChild(document.createTextNode(hobby));
+    li.appendChild(document.createTextNode(item));
     ul.appendChild(li);
 }
+
+
 // Step 7: Repeat Step 5 using the HTML <ul> element with an ID of hobbies
 // Step 8: For each object in the <em>placesLived</em> property:
 // - Create an HTML <dt> element and put its place property in the <dt> element
 // - Create an HTML <dd> element and put its length property in the <dd> element
 // Step 9: Append the HTML <dt> and <dd> elements created above to the HTML <dl> element with an ID of places-lived
 var dl = document.getElementById("places-lived");
-
-for (var i = 0; i < personalInfo.placeslived.length; i++) {
-    var place = personalInfo.placeslived[i];
+personalInfo.placeslived.forEach(placePrint);
+function placePrint(item){
+    var place = item;
     var dt = document.createElement('dt');
     dt.appendChild(document.createTextNode(place.place));
     var dd = document.createElement('dd');
@@ -72,3 +76,4 @@ for (var i = 0; i < personalInfo.placeslived.length; i++) {
     dl.appendChild(dt);
     dl.appendChild(dd);
 }
+
