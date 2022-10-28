@@ -7,12 +7,11 @@ const date = new Date();
 // Step 2: Declare another variable to hold the day of the week
 // Step 3: Using the variable declared in Step 1, assign the value of the variable declared in Step 2 to the day of the week ( hint: getDay() )
 weekday = date.getDay();
-
 // Step 4: Declare a variable to hold a message that will be displayed
-messageholder = '';
+let messageholder = '';
 // Step 5: Using an if statement, if the day of the week is a weekday (i.e. Monday - Friday), set the message variable to the string 'Hang in there!'
 // Step 6: Using an else statement, set the message variable to 'Woohoo!  It is the weekend!'
-if(weekday != 6 & weekday != 0){
+if(weekday ==1 || weekday ==2 || weekday ==3 || weekday ==4 || weekday ==5 ){
     messageholder='Hang in there!';
 }else{
     messageholder='Woohoo!  It is the weekend!';
@@ -26,36 +25,36 @@ messageholder2 = '';
 // Step 2: Use switch, case and break to set the message variable to the day of the week as a string (e.g. Sunday, Monday, etc.) using the day of week variable declared in Step 2 above
 switch(weekday){
     case 0:
-        messageholder2='sunday';
+        messageholder2='Sunday';
         break;
     case 1:
-        messageholder2='monday';
+        messageholder2='Monday';
         break;
     case 2:
-        messageholder2='tuesday';
+        messageholder2='Tuesday';
         break;        
     case 3:
-        messageholder2='wednesday';
+        messageholder2='Wednesday';
         break;
     case 4:
-        messageholder='thursday';
+        messageholder2='Thursday';
         break;
     case 5:
-        messageholder='friday';
+        messageholder2='Friday';
         break;
     case 6:
-        messageholder='saturday';
+        messageholder2='Saturday';
         break;
 }
 /* OUTPUT */
 
 
 // Step 1: Assign the value of the first message variable to the HTML element with an ID of message1
-const MYmessage = document.getElementById("message1");
-MYmessage.innerHTML = messageholder;
-// Step 2: Assign the value of the second message variable to the HTML element with an ID of message2
 const mymessage_2 = document.getElementById("message2");
 mymessage_2.innerHTML = messageholder2;
+// Step 2: Assign the value of the second message variable to the HTML element with an ID of message2
+const MYmessage = document.getElementById("message1");
+MYmessage.innerHTML = messageholder;
 
 /* FETCH */
 // Step 1: Declare a global empty array variable to store a list of temples
@@ -78,7 +77,6 @@ function output(array){
         var location = array[i].location;
         var dedicated = array[i].dedicated;
         var imgurl = array[i].imageUrl;
-        console.log(array[i]);
         let h3 = document.createElement('h3');
         let h4 = document.createElement('h4');
         let h4_2 = document.createElement('h4');
